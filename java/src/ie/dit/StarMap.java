@@ -8,8 +8,12 @@ import processing.data.TableRow;
 
 public class StarMap extends PApplet
 {
+//<<<<<<< HEAD
     int selected1 = -1;
     int selected2 = -1;
+//=======
+
+//>>>>>>> d85640236ecd5b7cc0c4b1632cfc8cc97e76eb0c
     public void settings()
     {
         size(500, 500);
@@ -17,9 +21,31 @@ public class StarMap extends PApplet
 
     public void setup()
     {
-        loadData();
+        //loadData();
         printStars();
         border = width * 0.05f;
+
+        //Testing the map
+        System.out.println(map(25, 20, 30, 30, 40)
+        );
+        System.out.println(Map1(25, 20, 30, 30, 40)
+        );
+        System.out.println(map(0, -100, 200, 100, 500)
+        );
+        System.out.println(Map1(0, -100, 200, 100, 500)
+        );
+
+        Star s = new Star();
+        s.setDisplayName("DIT");
+        stars.add(s);
+
+        Star s1 = stars.get(0);
+
+        s1.setDisplayName("TU Dublin");
+
+        System.out.println(s);
+        System.out.println(stars.get(0));
+        System.out.println(s1);
     }
 
     public void loadData()
@@ -94,6 +120,7 @@ public class StarMap extends PApplet
 
     public void mouseClicked()
     {
+//<<<<<<< HEAD
         //mouseX, mouseY;    
         //dist(mouseX, mouseY , mouseX, mouseY);
         for(int i= 0; i<stars.size();i++)
@@ -103,6 +130,7 @@ public class StarMap extends PApplet
             float y = map(s.getyG(), -5, 5, border, height - border);
             //means you havev cliked over a star
             if(dist(mouseX, mouseY, x, y)<s.getAbsMag()/2)
+            //if(dist(muouseX, mouseY, star.screenPos.x, star.screenPos.y)
             {
                 if(selected1 == -1)
                 {
@@ -115,6 +143,34 @@ public class StarMap extends PApplet
                 }
             }
         }
+//=======
+            
+//>>>>>>> d85640236ecd5b7cc0c4b1632cfc8cc97e76eb0c
+    }
+
+    public float Map1(float a, float b, float c, float d, float e)
+    {
+        //map(a, b, c, d, e)
+        // a = what we are mapping
+        //b = first range
+        //c last range
+        //d where it starts
+        //e where it ends
+        float x  = (b + c) /2;
+        float y = (d + e) /2;
+
+        //System.out.println("it is "+ y);
+        //return y;
+        
+//5, 0, 10, 10, 20 - answer 15
+        float range1 = c - b; // answer is 10
+        float howFar = a - b; // answer is 5
+
+        float range2 = e-d;
+
+
+        return d + (howFar/ range1)*range2;
+        
     }
 
     public void draw()
@@ -123,6 +179,7 @@ public class StarMap extends PApplet
         drawGrid();
         drawStars();
         mouseClicked();
+        Map1(5, 0, 10, 10, 20);
     }
 
     private ArrayList<Star> stars = new ArrayList<Star>();
